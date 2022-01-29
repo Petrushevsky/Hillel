@@ -1,4 +1,4 @@
-package Hillel.HomeWorksJavaIntroduction;
+package Hillel.javaIntroduction;
 
 import java.util.Scanner; // scanner import
 

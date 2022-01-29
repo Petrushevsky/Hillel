@@ -1,4 +1,4 @@
-package Hillel.HomeWorksJavaIntroduction;
+package Hillel.javaIntroduction;
 /**
  * ДЗ 16. Копирование массива
  * 1. Создать массив на 20 чисел.

@@ -1,4 +1,4 @@
-package Hillel.HomeWorksJavaIntroduction;
+package Hillel.javaIntroduction;
 /**
  * ДЗ 18. Лотерея
  * <p>

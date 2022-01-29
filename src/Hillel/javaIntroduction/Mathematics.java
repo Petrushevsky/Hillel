@@ -1,4 +1,4 @@
-package Hillel.HomeWorksJavaIntroduction;
+package Hillel.javaIntroduction;
 
 public class Mathematics {
     public static void main(String[] args) {
