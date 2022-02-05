@@ -1,7 +1,8 @@
 package Hillel.javaIntroduction.HomeWork30Converter;
 
-public interface Converter {
-
-        void convert();
+interface Converter {
+  default double convert(double d1){
+          return d1;
+  }
 
 }
