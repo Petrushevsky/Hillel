@@ -1,27 +1,28 @@
 package Hillel.javaIntroduction.HomeWork29Taxes;
 
 public class RetailProperty extends Realty {
-    private float tax;
+    private String name = "Торговая недвижимость";
     private float sales;
-    private float square;
 
     public RetailProperty() {
     }
 
-    public RetailProperty(float tax, float sales, float square) {
-        this.tax = tax;
+    public RetailProperty(float tax, float square, float sales) {
+        super.tax = tax;
+        super.square = square;
         this.sales = sales;
-        this.square = square;
     }
 
     @Override
-    public void taxes() {
+    public String toString(){
+        return name;
+    }
 
+    @Override
+    public float taxes() {
         if (sales > 100) {
             float taxes = (square / 100) * tax;
-            System.out.println("Налог на торговую недвижимость составляет " + taxes + "$");
-        } else System.out.println("Выручка меньше 100$, невозможно посчитать налог для торговой недвижимости");
-
-
+            return taxes;
+        } else return 0;
     }
 }

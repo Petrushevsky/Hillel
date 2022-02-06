@@ -1,40 +1,36 @@
 package Hillel.javaIntroduction.HomeWork29Taxes;
 
-import Hillel.javaIntroduction.HomeWork28CoffeMachine.ConsoleInputCheck;
-import Hillel.javaIntroduction.HomeWork28CoffeMachine.Drinks;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CalculateTaxes {
     public static void main(String[] args) {
         System.out.println("Введите налог на недвижимость, %");
-        int tax = ConsoleInputCheck.getNumber();
+        int tax = MyConsoleUtils.getNumber();
         System.out.println("Введите площадь производственной недвижимости");
-        int industrialSquare = ConsoleInputCheck.getNumber();
+        int industrialSquare = MyConsoleUtils.getNumber();
         System.out.println("Введите площадь жилой недвижимости");
-        int residentialSquare = ConsoleInputCheck.getNumber();
+        int residentialSquare = MyConsoleUtils.getNumber();
         System.out.println("Введите субсидию на жилую недвижимость, %");
-        int subsidy = ConsoleInputCheck.getNumber();
+        int subsidy = MyConsoleUtils.getNumber();
         System.out.println("Введите площадь торговой недвижимости");
-        int retailSquare = ConsoleInputCheck.getNumber();
+        int retailSquare = MyConsoleUtils.getNumber();
         System.out.println("Введите выручку торговой недвижимости");
-        int sales = ConsoleInputCheck.getNumber();
+        int sales = MyConsoleUtils.getNumber();
 
-        Realty Industrial = new IndustrialProperty(tax, industrialSquare);
-        Realty Retail = new RetailProperty(tax, sales, retailSquare);
-        Realty Residential = new ResidentialProperty(tax, subsidy, residentialSquare);
+        Realty IndustrialZone1 = new IndustrialProperty(tax, industrialSquare);
+        Realty RetailShop = new RetailProperty(tax, retailSquare, sales);
+        Realty FlatKanatnayaStr69 = new ResidentialProperty(tax, residentialSquare, subsidy);
 
         List<Realty> realtyTaxes = new ArrayList<>();
-        realtyTaxes.add(Industrial);
-        realtyTaxes.add(Retail);
-        realtyTaxes.add(Residential);
+        realtyTaxes.add(IndustrialZone1);
+        realtyTaxes.add(RetailShop);
+        realtyTaxes.add(FlatKanatnayaStr69);
 
         for (Realty realty : realtyTaxes) {
             System.out.println("==============================================");
-            realty.taxes();
+            System.out.println("Налог на " + realty + " составляет " + realty.taxes() + "$");
         }
-        System.out.println("===================== END =====================");
+            System.out.println("===================== END =====================");
     }
 }

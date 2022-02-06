@@ -1,21 +1,27 @@
 package Hillel.javaIntroduction.HomeWork29Taxes;
 
 public class IndustrialProperty extends Realty {
-    private float tax;
-    private float square;
+    private String name = "Производственная недвижимость";
 
     public IndustrialProperty() {
     }
 
     public IndustrialProperty(float tax, float square) {
-        this.tax = tax;
-        this.square = square;
+        super.tax = tax;
+        super.square = square;
     }
-
 
     @Override
-    public void taxes() {
-        float taxes = (square / 100) * tax;
-        System.out.println("Налог на производственную недвижимость составляет " + taxes + "$");
+    public float taxes() {
+        return super.taxes();
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }
+
+
+
