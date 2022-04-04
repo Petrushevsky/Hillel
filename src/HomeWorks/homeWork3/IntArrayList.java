@@ -2,6 +2,7 @@ package HomeWorks.homeWork3;
 
 import java.util.Arrays;
 
+
 public class IntArrayList implements IntList {
     //массив с которым будем работать
     private int[] array = new int[10];

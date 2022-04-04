@@ -1,6 +1,7 @@
 package HomeWorks.homeWork3;
 
 public interface IntList {
+
     void add(int element);
 
     boolean add(int index, int element);
