@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,11 @@ public class BookController {
     @ResponseStatus(HttpStatus.OK)
     public List<Books> readAllBooks() {
         return bookService.read();
+    }
+    @GetMapping(value = "/books", params={"name"})
+    @ResponseStatus(HttpStatus.OK)
+    public List<Books> findBookByName(String name) {
+        return bookService.findByName(name);
     }
 
     @PutMapping("/books")
