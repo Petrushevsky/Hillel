@@ -1,5 +1,7 @@
 package com.petrushevsky.bookstore.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,12 +10,30 @@ public class Books {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
-
     private String name;
     private String author;
     private int price;
     private int year;
     private int weight;
+  //  @JsonIgnore
+    private Boolean isDeleted;
+
+
+  //  @JsonIgnore
+    public Boolean getDeleted(){
+        if (isDeleted==null) {
+            isDeleted=false;
+            throw new NullPointerException("NULL - edited to false");
+            //setDeleted(Boolean.FALSE);
+        }
+         return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+
 
     public Integer getId() {
         return id;

@@ -4,11 +4,11 @@ import com.petrushevsky.bookstore.domain.Books;
 import com.petrushevsky.bookstore.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.io.IOException;
+import java.util.*;
 
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -25,10 +25,20 @@ public class BookController {
     public List<Books> readAllBooks() {
         return bookService.read();
     }
+    /*@GetMapping("/books")
+    @ResponseStatus(HttpStatus.OK)
+    public String readAllBooks() {
+        return bookService.errorMessage("YSE");
+    }*/
     @GetMapping(value = "/books", params={"name"})
     @ResponseStatus(HttpStatus.OK)
     public List<Books> findBookByName(String name) {
         return bookService.findByName(name);
+    }
+    @GetMapping("/books/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Books findBySomeID(@PathVariable Integer id){
+        return bookService.findById(id);
     }
 
     @PutMapping("/books")
@@ -37,10 +47,10 @@ public class BookController {
         return bookService.update(books);
     }
 
-    @DeleteMapping("/books")
+    @PatchMapping ("/books/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeBooksById(@RequestBody Books books) {
-       bookService.delete(books);
+    public void removeBooksById(@PathVariable Integer id) {
+       bookService.delete(id);
     }
 
     @PostMapping("/books")
@@ -48,6 +58,14 @@ public class BookController {
     public Books crateBook(@RequestBody Books books) {
         return bookService.create(books);
     }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, String>> handleException(
+            Exception e) throws IOException {
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("Error message", e.getLocalizedMessage());
+        errorResponse.put("OUR Error status", HttpStatus.INTERNAL_SERVER_ERROR.toString());
 
+        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 
 }

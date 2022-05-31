@@ -10,7 +10,9 @@ import java.util.Optional;
 public interface BookService {
     Books create(Books books);
     List<Books> read();
+    Books findById(Integer id);
     List<Books> findByName(String name);
     Optional<Books> update(Books books);
-    void delete(Books books);
+    String errorMessage(String message);
+    void delete(Integer id);
 }
