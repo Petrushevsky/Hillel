@@ -1,32 +1,33 @@
 package com.petrushevsky.bookstore.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "books")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Books {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String author;
     private int price;
     private int year;
     private int weight;
-  //  @JsonIgnore
+    //  @JsonIgnore
     private Boolean isDeleted;
 
 
-  //  @JsonIgnore
+    //  @JsonIgnore
     public Boolean getDeleted(){
-        if (isDeleted==null) {
-            isDeleted=false;
-            throw new NullPointerException("NULL - edited to false");
-            //setDeleted(Boolean.FALSE);
-        }
-         return isDeleted;
+             return isDeleted;
     }
 
     public void setDeleted(boolean deleted) {

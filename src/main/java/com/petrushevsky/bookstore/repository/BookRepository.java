@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+//@Repository //OK
+@org.springframework.stereotype.Repository
 public interface BookRepository extends JpaRepository<Books,Integer> {
     List<Books> findByName(String name);
 }
