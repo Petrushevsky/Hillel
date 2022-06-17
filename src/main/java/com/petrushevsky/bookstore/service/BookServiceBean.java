@@ -2,15 +2,13 @@ package com.petrushevsky.bookstore.service;
 
 import com.petrushevsky.bookstore.domain.Books;
 import com.petrushevsky.bookstore.repository.BookRepository;
-import com.petrushevsky.bookstore.util.ResourceNotFoundException;
-import com.petrushevsky.bookstore.util.ResourceWasDeletedException;
+import com.petrushevsky.bookstore.util.exceptions.ResourceNotFoundException;
+import com.petrushevsky.bookstore.util.exceptions.ResourceWasDeletedException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 
 
 //@Service //ok
@@ -31,8 +29,7 @@ public class BookServiceBean implements BookService {
         return bookRepository.findAll();
     }
 
-    @Override
-    public Books findById(Integer id) {
+    public Books getById(Integer id) {
         Books books = bookRepository.findById(id)
                 .orElseThrow(ResourceNotFoundException::new);
         /*Books book = getBookId(id);
