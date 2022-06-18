@@ -1,3 +1,5 @@
+//интерфейс для мпы моей
+
 public interface MyMap<K, V> {
 
     boolean put(K key, V value);
